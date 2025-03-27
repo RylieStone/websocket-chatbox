@@ -1,0 +1,48 @@
+.chat {
+    background-color: grey;
+    width: 500px;
+    height: 400px;
+    display: flex;
+    margin: auto;
+    border-radius: 10px;
+    flex-direction: column;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #888 #f1f1f1;
+    .message {
+        margin-top: 5px;
+        margin-left: 7px;
+        margin-right: 7px;
+        margin-bottom: 5px;
+        border-radius: 10px;
+        background-color: #63666A;
+        display: flex;
+        align-items: center;
+        
+    }
+}
+.chatwindow { /* Ensure the class name matches JSX */
+    display: flex;
+    flex-direction: row; /* Ensures elements are side by side */
+    align-items: center; /* Aligns elements vertically */
+    justify-content: center; /* Centers them if needed */
+    gap: 10px; /* Adds spacing between input and button */
+}
+
+.textBox {
+    flex-grow: 1; /* Makes the input expand to fill available space */
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 350px;
+}
+
+.send {
+    padding: 8px 12px;
+    border-radius: 5px;
+    background-color: #63666A;
+    color: white;
+    border: none;
+    cursor: pointer;
+    width: 110px
+}
