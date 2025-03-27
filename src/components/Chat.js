@@ -14,3 +14,4 @@ function chat(props) {
         </div>
     )
 }
+export default chat
