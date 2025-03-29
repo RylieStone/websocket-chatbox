@@ -1,6 +1,9 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import "./chat.css"
 function chat(props) {
+    const navigate = useNavigate()
+    if (props.username.trim() === '') navigate('/')
     const onSubmit = e => {
         e.preventDefault()
         let message = props.message
