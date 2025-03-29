@@ -5,7 +5,7 @@ async function message(obj) {
     return data
 }
 async function history() {
-    const data = await db('chat')
+    const data = await db('chat').select('*')
     return data
 }
 
