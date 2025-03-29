@@ -46,7 +46,7 @@ function App() {
       </h1>
       <Routes>
         <Route path='/' element={<Main updateUser={setUsername}/>}/>
-        <Route path='/chat' element={<Chat messages={messages} message={message} setMessage={setMessage} submitMessage={submitMessage}/>}/>
+        <Route path='/chat' element={<Chat username={username} messages={messages} message={message} setMessage={setMessage} submitMessage={submitMessage}/>}/>
       </Routes>
     </div>
   );
