@@ -15,7 +15,7 @@ function chat(props) {
     return (
         <div>
             <div className="chat">
-                {props.messages.map((message) => {
+                {props.messages && props.messages.map((message) => {
                     console.log(props.messages)
                     return (<div className='message' key={message.id}>
                         <h3 className='username'>{message.username}</h3>
