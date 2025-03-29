@@ -1,16 +1,9 @@
 import React, {useState} from 'react'
 import "./chat.css"
-const fakeMessages = [
-    {id: 1, username: 'faker', message: "why hello there"},
-    {id: 2, username: 'brooo', message: "what are you doing"},
-    {id: 3, username: 'faker', message: "why hello there"},
-    {id: 4, username: 'brooo', message: "what are you doing"},
-]
 function chat(props) {
     const onSubmit = e => {
         e.preventDefault()
         let message = props.message
-        console.log(message)
         if (props.message.trim !== '') {
             props.setMessage(message)
             props.submitMessage()
@@ -19,7 +12,7 @@ function chat(props) {
     return (
         <div>
             <div className="chat">
-                {fakeMessages.map((message) => {
+                {props.messages.map((message) => {
                     return (<div className='message' key={message.id}>
                         <h3 className='username'>{message.username}</h3>
                         <p className='message'>{message.message}</p>
