@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import "./chat.css"
 function chat(props) {
     const onSubmit = e => {
@@ -13,6 +13,7 @@ function chat(props) {
         <div>
             <div className="chat">
                 {props.messages.map((message) => {
+                    console.log(props.messages)
                     return (<div className='message' key={message.id}>
                         <h3 className='username'>{message.username}</h3>
                         <p className='message'>{message.message}</p>
