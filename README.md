@@ -1,24 +1,28 @@
-# Websocket chat server
-
+# Websocket Chat Server
+ 
 ## Tools
-
-- Node >= 16.x
-- NPM >= 8.x (update NPM executing `npm i -g npm`)
-
-## Project Set Up
-
-- clone and `npm install`.
-- once packages are installed run `npm run migrate`
-- lastly, run `npm run start` which will start both the frontend and backend
-
+ 
+- Node.js (version 16.x or higher)
+- NPM (version 8.x or higher; update NPM by executing `npm i -g npm`)
+ 
+## Project Setup
+ 
+1. Clone the repository and run `npm install` to install all necessary packages.
+2. Once the installation is complete, execute `npm run migrate` to apply the migrations.
+3. Finally, run `npm run start` to launch both the frontend and backend of the application.
+ 
 ## Project Instructions
-
-the project is ran on `localhost:3000` with the api ran on `localhost:4000`. you will have to type in a username in the form given on the frontend before you are connected to the websocket live chat server to communicate with other clients live
-
-## architecture and design
-
-I had designed the project with a modular design reserving each file for its own respective part in the website. App.js contains the header and the text within as well as the 2 different routes for the Main.js and the Chat.js: the Main.js was made to contain the authentication for implementing the user's username for use so that the user can be identified when they sent their message. i had also implemented a check in the username field so that clients would not be able to make a blank username/or a username with only spaces.
-
-## improvements id like to add for production
-
-before the projhect is moved to production id love to add a user is typing feature to the project and make the website look more sleek and well designed to be pleasing to the eyes. I would also like to add a message appear feature where all the other messages would shift upwards and the new message would appear to be more visually appealing.
+ 
+The application operates on `localhost:3000`, while the API runs on `localhost:4000`. Before you connect to the websocket live chat server and engage with other clients, simply enter your username in the form on the front end.
+ 
+## Architecture and Design
+ 
+This project features a robust modular design, where each file serves a specific purpose. `App.js` encompasses the header, text content, and the two distinct routes for `Main.js` and `Chat.js`. `Main.js` is responsible for user authentication, allowing users to input their usernames for identification when sending messages. I have implemented a validation check in the username field to prevent users from submitting blank usernames or those containing only spaces. Once a username is successfully submitted, I leverage `useNavigate` to direct the user to the chat room, where they can send and receive messages in real-time. Connections and disconnections from the server are managed in real-time and logged in the console.
+ 
+On the API side, the architecture consists of two main components: the model and the server itself. The server efficiently handles all API interactions, managing user connections, disconnections, and message transmissions. Upon connection, the server dispatches an array of messages to the client, which are seamlessly displayed in the chat box. The server collaborates with the model, which accesses and utilizes data from the database. The message function succinctly adds messages to the database using parameters for the username and message content, while the history retrieves and returns data from the database, ensuring the client always has the latest information. The database employs a unique ID key, automatically generating the next number with each new entry.
+ 
+These design principles create a seamless user experience and ensure that information is broadcasted in real-time to all connected clients.
+ 
+## Improvements I Will Implement for Production
+ 
+Before we take this project to production, I am committed to adding a "user is typing" feature and enhancing the website's visual design to elevate its aesthetic appeal. Additionally, I will introduce a message appearance feature, where existing messages will shift upwards, allowing new messages to display in a more visually engaging manner. This will significantly enhance the overall user experience.
