@@ -10,7 +10,7 @@ function Main(props) {
         e.preventDefault();
         
         const trimmedUsername = username.trim();
-        if (trimmedUsername.length >= 1) {
+        if (trimmedUsername.length > 0) {
             props.updateUser(trimmedUsername); // Ensure correct function name
             navigate("/chat");
         } else {
@@ -21,13 +21,16 @@ function Main(props) {
     return (
         <div className="form">
             <h2>Select a username</h2>
-            <p id="message">{err}</p>
+            {err && <p id="message">{err}</p>}
             <form onSubmit={onSubmit}>
                 <div>
                     <label htmlFor="username">Username:</label>
                     <input 
                         name="username" 
-                        onChange={(e) => setUsername(e.target.value)} 
+                        onChange={(e) => {
+                            setUsername(e.target.value)
+                            setErr('')
+                        }} 
                         value={username} 
                         placeholder="Type your Username"
                     />
