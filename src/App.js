@@ -11,13 +11,18 @@ function App() {
 
   const [username, setUsername] = useState('')
   const [message, setMessage] = useState('')
+  const [messages, setMessages] = useState([])
   const [ws, setWs] = useState(null)
   useEffect(() => {
     const socket = new WebSocket('ws://localhost:4000')
 
-    socket.addEventListener('open', () => console.log('connected to server'))
+    socket.addEventListener('open', (event) => {
+      setMessages(JSON.parse(event.data))
+    })
     socket.addEventListener('close', () => console.log('Disconnected from server'))
-    socket.addEventListener('message', (event) => console.log('message recieved from server ', event.data))
+    socket.addEventListener('message', (event) => {
+      setMessages(JSON.parse(event.data))
+    })
 
     setWs(socket)
 
@@ -36,7 +41,7 @@ function App() {
       </h1>
       <Routes>
         <Route path='/' element={<Main updateUser={setUsername}/>}/>
-        <Route path='/chat' element={<Chat message={message} setMessage={setMessage} submitMessage={submitMessage}/>}/>
+        <Route path='/chat' element={<Chat messages={messages} message={message} setMessage={setMessage} submitMessage={submitMessage}/>}/>
       </Routes>
     </div>
   );
