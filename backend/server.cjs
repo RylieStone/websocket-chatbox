@@ -8,6 +8,8 @@ wss.on("connection", ws => {
         const str = data.toString('utf-8')
         const obj = JSON.parse(str)
         console.log(obj)
+
+        ws.send(JSON.stringify(obj))
     })
     ws.on('close', () => {
         console.log("client has disconnected from the server")
