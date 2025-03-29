@@ -11,12 +11,13 @@
   },
   "scripts": {
     "frontend": "react-scripts start",
-    "backend": "cd backend && node server.cjs",
+    "backend": "cd backend && nodemon server.cjs",
     "start": "concurrently \"npm run frontend\" \"npm run backend\"",
-    "migrate": "knex migrate:latest",
-    "rollback": "knex migrate:rollback"
+    "migrate": "knex migrate:latest --knexfile ./knexfile.cjs",
+    "rollback": "knex migrate:rollback --knexfile ./knexfile.cjs"
   },
   "type": "module",
+  "main": "server.js",
   "browserslist": {
     "production": [
       ">0.2%",
