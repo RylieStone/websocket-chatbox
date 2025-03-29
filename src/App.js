@@ -11,18 +11,23 @@ function App() {
 
   const [username, setUsername] = useState('')
   const [message, setMessage] = useState('')
-  const [messages, setMessages] = useState([])
+  const [messages, setMessages] = useState()
   const [ws, setWs] = useState(null)
   useEffect(() => {
     const socket = new WebSocket('ws://localhost:4000')
 
-    socket.addEventListener('open', (event) => {
-      setMessages(JSON.parse(event.data))
-    })
-    socket.addEventListener('close', () => console.log('Disconnected from server'))
-    socket.addEventListener('message', (event) => {
-      setMessages(JSON.parse(event.data))
-    })
+      socket.addEventListener('open', () => console.log('client has connected'))
+      socket.addEventListener('close', () => console.log('Disconnected from server'))
+      socket.addEventListener('message', (event) => {
+        const message = JSON.parse(event.data)
+        if (message === undefined || message === null) {
+          setMessages([])
+        } else if (Array.isArray(message)) {
+          setMessages(message)
+        } else {
+          setMessages(prev => [...prev, JSON.parse(event.data)])
+        }
+      })
 
     setWs(socket)
 
